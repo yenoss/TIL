@@ -16,3 +16,6 @@
 + 6.0으로 올라가면서 값을 넣을때 명확히 content-type을 명시하는 것이 required로 생겼다.
 + 그냥 넣으려고하면 타입관련 에러가 발생한다.
 + [포스트](https://yenoss.github.io/2017/11/10/elk/)에 상세히 적었다.
+
+
+## 3.Elastick Serarch index 는 명시에 
