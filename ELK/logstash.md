@@ -29,3 +29,24 @@ index => "%{log_type}"
 
 `index => "%{index}-%{+YYYY.MM.dd}"`
 
+
+## 3.logstash 에서 txt파일을 읽어보자.
++ logstash의 conf파일은 크게 input/filter/output으로 되어있다.
++ 이 중 input에서 txt파일을 읽는 예는 아래와 같다.
+
+
+```
+input {
+	file {
+		path => "{dirctory}/log.txt*"
+        start_position => beginning
+	}
+}
+```
+
++ 위와 같이 설정하면 해당디렉토리에서. log.txt 로시작하는 모든 txt파일을 row별로 읽게된다.
++ 이떄 start_position옵션을 주게되는데 이는 어디서부터 해당 로그를 읽을 것인가를 의미한다.
++ beginning => 처음부터읽는다는 의미이다, 단 최초 접근시만 적용되고, 이후로 읽게되면 live stream방식으로 읽기때문에 읽은 이후의 row에 대해서만 로그를 읽어드린다.
+
++ 필자는 log를 구분하기 쉽게, 용량이슈등에 있어 daily로 저장함으로 log.txt.2017=12-04 파일에서 최초 로그등을 글기위해 위와 같이 패턴을 설정하였다. (실제로 live 데이터만 긁게된다면, log.txt만 긁으면될 것이다.)
+
