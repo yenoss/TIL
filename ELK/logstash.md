@@ -50,3 +50,6 @@ input {
 
 + 필자는 log를 구분하기 쉽게, 용량이슈등에 있어 daily로 저장함으로 log.txt.2017=12-04 파일에서 최초 로그등을 글기위해 위와 같이 패턴을 설정하였다. (실제로 live 데이터만 긁게된다면, log.txt만 긁으면될 것이다.)
 
+
+##Ref
+[logstash-startposition](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html#plugins-inputs-file-start_position)
