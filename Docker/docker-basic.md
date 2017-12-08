@@ -118,7 +118,20 @@ docker push {repository}/test:1.0
 ```
 
 
+#### docker pull
++ docker를 repository에서 받아보자. 필자는 aws ecs(elastic container service)을 사용하고있다.
+
+```
+ aws ecr describe-repositories
+ docker pull aws_account_id.dkr.ecr.us-west-2.amazonaws.com/amazonlinux:latest
+```
+
++ 레파짓토리를 확인하고, 해당 레파짓토리에서 image파일을 땡겨오는 코드이다.
++ 간단하지만, 필자는 권한 에러로 매우 느리게 진행되었다.
++ 위의 코드를 실행하기전에 ecs에서 레파짓토리 읽기,쓰기등의 설정을 꼭!! 해줘야하고, 사용자관리 솔루션인 iam에서도 해당 유저의 ecs Acess에 해당하는 권한을 꼭 설정해주어야한다.
+
 
 
 
 ## REF.
+[aws-ecs](http://docs.aws.amazon.com/ko_kr/AmazonECR/latest/userguide/docker-pull-ecr-image.html)
