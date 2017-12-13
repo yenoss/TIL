@@ -3,6 +3,33 @@
 ## WHAT?
 + logStash 사용경험을 이야기합니다.
 
+## 0. Install(logstash 6.0)
++ log stash의 기본 설치사양은 아래와 같다.
++ aws에서라면 free tire에서는 안돌아가고, t2.medium 사양이 최소사양에 해당한다.
+
+```
+RAM 4GB, CPU 2
+```
+
+#### java7 설치.
+
+```
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get -y install oracle-java8-installer
+```
+
+####  로그스태시 설치
+
+```
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get -y install oracle-java8-installer
+```
+
+
+
+
 ## 1.logstash conf파일에서 특정 field에서 value를 내부에서 사용하려면?
 
 + index를 설정할때 특정 필드에 있는 value를 넣어서 만들고싶었다(idnex로 카테고리를 분류하기위해)
@@ -52,4 +79,9 @@ input {
 
 
 ##Ref
+
+[logstash-official](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+
 [logstash-startposition](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html#plugins-inputs-file-start_position)
+
+[logstash-install](https://www.digitalocean.com/community/tutorials/how-to-use-logstash-and-kibana-to-centralize-and-visualize-logs-on-ubuntu-14-04)
