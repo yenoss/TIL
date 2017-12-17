@@ -32,5 +32,12 @@ creditAverage.isNaN ? "0.0" : String(creditAverage)
 ```
 + creditAverage가 나눌수없는값으로 나눠지는경우 Nan이 나옴으로 nan인지 여부를 체크해 0.0 아님 string으로 리턴하는 3항 연산자예시이다.
 
+#3 NSSet to NSArray
++ core data를 사용하다 nssset 타입을 nsarray로 바꾸고싶었다.
+
+
+```
+setObjects.allObjects as! Array<>
+```
 
 ## REF.

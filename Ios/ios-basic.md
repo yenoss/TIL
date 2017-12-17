@@ -66,6 +66,14 @@ extension UIImage {
     }
 }
 ```
+
+## 4. Lauch Image Asset
++ xcode에서 launch image를 설정한는 방법중에 대표적으로 프로젝트 생성시 생겨나는 launchscreen stroyboard를 사용하는 방법과 launch image asset을 이용하는 방법이있다.
++ 두 개중  하나를 설정해서 써야하는데, launch ScreenImage를 사용할경우 
+ 	+ target>project App Icons and LaunchImages에서 LaunchScreenFile을 해당 스토리보드로 설정해주면 사용할 수 있고,
+ 	+ asset을 이용하는 경우는  App Icons ans LaunchImages에서 Launch ImageSource에 asset을 설정해준다음.. 꼭!! LaunchScreenFile에  아무것도 없는 빈곳으로 놓아야 해당 asset으로 Launch 이미지가 보여진다.
+ 	+ 추가로, 만일 기존앱이 최초에 LaunchScreenFile로 빌드되어있다면,  꼭 앱을 삭제하고  다시 실행해야, 다시 설정한 asset으로 Launch화면이 바뀔것이다. 
+
 ## REF.
 [textfield highlight](https://coderwall.com/p/kir4kw/moving-to-the-next-uitextfield-in-an-ios-app)
 
