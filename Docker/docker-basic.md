@@ -3,6 +3,9 @@
 ## WHAT?
 + docker의 사용법에 대해 이야기 합니다.
 
+
+
+
 ## 1. Docker 기본.
 
 #### docker ubuntu image 받기.
@@ -56,10 +59,11 @@ sudo docker ps -a
 + dockerFile로 image 생성하기.
 
 ```
-sudo docker build  --tag test:0.1 .
+sudo docker build --no-cache  --tag test:0.1 .
 ```
 
 + --tag : 이미지의 태그를 설정, 이름만설정하면 latest로 자동설정.
++ --no-cache : 기존에 있는 cache를 사용하지 않고 새롭게 빌드한다.
 
 #### docker repository push
 
@@ -132,6 +136,91 @@ docker push {repository}/test:1.0
 
 
 
+## 2. docekr codec Error (Readme read err)
+
++ 도커 환경에서 python 관련 라이브러리를 건드리다 아래와같은 에러를 만났다.
+
+```
+Collecting pyfcm==1.4.3 (from -r requirements.txt (line 24))
+  Downloading pyfcm-1.4.3.tar.gz
+    Complete output from command python setup.py egg_info:
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/tmp/pip-build-2y23iekp/pyfcm/setup.py", line 41, in <module>
+        long_description=read('README.rst'),
+      File "/tmp/pip-build-2y23iekp/pyfcm/setup.py", line 17, in read
+        return open(os.path.join(os.path.dirname(__file__), fname)).read()
+      File "/usr/lib/python3.5/encodings/ascii.py", line 26, in decode
+        return codecs.ascii_decode(input, self.errors)[0]
+    UnicodeDecodeError: 'ascii' codec can't decode byte 0xc2 in position 4157: ordinal not in range(128)
+
+```
+
++ 보아하니 pyfcm 라이버리에서 README.rst파일을 읽다 ascii값을 디코드 하지 못한다는 에러였다.
++ 도커에서 실행할경우, ubuntu의 기본 locale이 utf8으로 잡혀 있지 않아서 발생하였다.
+	+ locale이란  세계각 나라에서 가지고 특징들을(언어,날짜..) 있는 os별 설정에 따라 어떻게 보여줄지를 정해지는 설정이다.
+	+ 예로 한국 2017년 1월 1일  출력을, 미국 local로 바꾸면 01/01/2017 로 보여지게된다.
+
+
++ 도커의 기본 locale은 아래와 같다.
+
+```
+root@269f0ac2522f:/# locale
+LANG=
+LANGUAGE=
+LC_CTYPE="POSIX"
+LC_NUMERIC="POSIX"
+LC_TIME="POSIX"
+LC_COLLATE="POSIX"
+LC_MONETARY="POSIX"
+LC_MESSAGES="POSIX"
+LC_PAPER="POSIX"
+LC_NAME="POSIX"
+LC_ADDRESS="POSIX"
+LC_TELEPHONE="POSIX"
+LC_MEASUREMENT="POSIX"
+LC_IDENTIFICATION="POSIX"
+LC_ALL=
+
+```
++ 즉, 아무것도 설정되어있지 않는 상태
+
+
+	
++ 위 라이브러리 설치하기전 아래와같이 ubuntu locale을 아래와 같이 utf8기반으로 바꿔주면된다.
+
+```
+RUN apt-get install -y locales
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
+```
+
+
++ 잘 실행되면 아래와 같이 나온다.
+```
+root@9b65b8fe46f6:# locale
+LANG=en_US.UTF-8
+LANGUAGE=en_US:en
+LC_CTYPE="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_PAPER="en_US.UTF-8"
+LC_NAME="en_US.UTF-8"
+LC_ADDRESS="en_US.UTF-8"
+LC_TELEPHONE="en_US.UTF-8"
+LC_MEASUREMENT="en_US.UTF-8"
+LC_IDENTIFICATION="en_US.UTF-8"
+LC_ALL=en_US.UTF-8
+```
+
 
 ## REF.
 [aws-ecs](http://docs.aws.amazon.com/ko_kr/AmazonECR/latest/userguide/docker-pull-ecr-image.html)
+[locale set](https://github.com/mozilla/unicode-slugify/issues/16)
+[locale set2](http://jaredmarkell.com/docker-and-locales/)
+[local ?](https://beomi.github.io/2017/07/10/Ubuntu-Locale-to-ko_KR/)

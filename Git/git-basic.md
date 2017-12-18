@@ -15,6 +15,10 @@ touch .emptys
 
 + 위와 같이 빈폴더 내부에 숨김파일을 하나 만들게 되면 트래킹에 잡히게된다.
 
+## 2. git 특정 브랜치 clone하기
+
++ `git clone -b {branchname} {repositoryUrl}`
+
 
 
 

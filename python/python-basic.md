@@ -1,4 +1,4 @@
-# ELK_ISSUE
+# python-basic
 
 ## WHAT?
 + python 기본 문법 or 함수등에 대해 이야기합니다.
@@ -79,10 +79,6 @@ for x in somelist[:]:
 somelist
 ```
 + 위와 같이 slice([:])를 이용하면 새로운 배열을 리턴함으로 기존 somelist와는 다른 배열에서 for loop를 돌게 된다.
-
-
-
-
 
 
 

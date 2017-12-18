@@ -20,7 +20,17 @@ ssh-add ~/.ssh/bitbucket_key
 
 + !! 배포시 위 와 같이 소스의 디펜더시가 키에 달려있는 것은 좋은 배포방법은 아닐것이다. 서버가 독립적으로 실행되는데 걸림돌이 될 수 있기 때문이다. 
 
+## 2. superviosrd not daemonize
++ docker로 서버요청을 받기위해선 docker에서 해당 서버포트를 물고(?:listen하도록) 있어야한다. 
++ 일반적인 아래와 같은 명령어를 쓰게 되면  daemon모드라 도커에 port로 잡히지 않는다. 
 
+```CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/fifl-box-api-live.conf"`
+```
 
++ 이럴땐 -n 옵션을 사용하면 된다.
+
+```
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/fifl-box-api-live.conf","-n"]
+```
 
 ## REF.
