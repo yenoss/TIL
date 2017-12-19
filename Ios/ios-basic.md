@@ -74,7 +74,22 @@ extension UIImage {
  	+ asset을 이용하는 경우는  App Icons ans LaunchImages에서 Launch ImageSource에 asset을 설정해준다음.. 꼭!! LaunchScreenFile에  아무것도 없는 빈곳으로 놓아야 해당 asset으로 Launch 이미지가 보여진다.
  	+ 추가로, 만일 기존앱이 최초에 LaunchScreenFile로 빌드되어있다면,  꼭 앱을 삭제하고  다시 실행해야, 다시 설정한 asset으로 Launch화면이 바뀔것이다. 
 
+## 5. Screenshot Detection
++ 내앱에서 스크린샷을 찍는 것을 감지하고 싶다면 아래와 같은 코드를 사용하면 된다
+ 
+```
+let mainQueue = OperationQueue.main
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot,
+                                                                object: nil,
+                                                                queue: mainQueue) { notification in
+                                                                    print("screee!!!")
+        }
+```
+
+
 ## REF.
 [textfield highlight](https://coderwall.com/p/kir4kw/moving-to-the-next-uitextfield-in-an-ios-app)
 
 [add imageBoarder](https://stackoverflow.com/questions/34984966/rounding-uiimage-and-adding-a-border)
+
+[screenshot detection](http://www.ios-blog.co.uk/tutorials/objective-c/how-to-detect-screenshots-in-objective-c-and-swift-like-snapchat/)
