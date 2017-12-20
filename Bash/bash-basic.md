@@ -34,5 +34,22 @@ rsync -av --exclude='/home/ubuntu/fiflbox/playground/test' /home/ubuntu/fiflbox/
 + -v: verbose(상세내용 출력)
 + -a: archiv(심볼릭, 그룹권한등 모든것을 복사)
 
+
+## 3. java8설치할경우  script로 license 승인하기
++ java8 뿐아니라, mysql등 다양한 경우에 스크립트로 키보드의 역할을 대신해야할 경우가있다.
++ 이번경우는 java8의 라이센스를 승인을 스크립트로 yes하는 코드이다.
++ apt 설치전 아래와같이 echo로 명령어를 설정해두면된다.
+
+```
+echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+```
+
++  | : 왼쪽 출력을 오른쪽으로 파이핑해라.( 복수의 명령어를 결합)
++  debconf-set-selections : 미리설정파일. 사용자가 debconf응답(여기선 라이센스)에대 사전에 응답을 정하는것
 ##REF
 [rsync](https://stackoverflow.com/questions/2193584/copy-folder-recursively-excluding-some-folders)
+
+[piping](http://mwultong.blogspot.com/2006/07/redirection-piping.html)
+
+[devconf](http://manpages.ubuntu.com/manpages/trusty/man1/debconf-set-selections.1.html)
+[devconf2](https://docs.openstack.org/liberty/ko_KR/install-guide-rdo/debconf/debconf-concepts.html)
