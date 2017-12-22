@@ -86,6 +86,17 @@ let mainQueue = OperationQueue.main
         }
 ```
 
+## 6. ViewDidLayoutSbuviews
++ 뷰컨트롤러의 뷰가 자식뷰를 배치하고 난뒤에 호출되는 메소드. 즉 뷰가 세팅된 후 변경 할것이 필요하다면 여시서 수정.
++ stroybaord상에서 설정한 view의 속성값을 변경을 하고싶다면 이곳에서 콜해야한다.
++ 필자는 button에 Round효과를 주기위해 viewdidlayoutsubview안에 라운드 코드를 추가하였다.
+
+```
+    override func viewDidLayoutSubviews() {
+        btn.layer.cornerRadius = btnDefault01.frame.width/2
+}
+```
+
 
 ## REF.
 [textfield highlight](https://coderwall.com/p/kir4kw/moving-to-the-next-uitextfield-in-an-ios-app)
@@ -93,3 +104,7 @@ let mainQueue = OperationQueue.main
 [add imageBoarder](https://stackoverflow.com/questions/34984966/rounding-uiimage-and-adding-a-border)
 
 [screenshot detection](http://www.ios-blog.co.uk/tutorials/objective-c/how-to-detect-screenshots-in-objective-c-and-swift-like-snapchat/)
+
+[btn round](https://stackoverflow.com/questions/37770456/how-to-make-uibutton-a-circle)
+
+[layoutsubview](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621398-viewdidlayoutsubviews)

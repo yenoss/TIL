@@ -33,6 +33,7 @@ sudo docker run -i -t --name ubu ubuntu /bin/bash
 
 + -d : daemon 모드, 백그라운드모드로.
 + -p : 포트설정 host와의 포트관계를 결정. ( -p 3000:3000 host 3000에 컨테이너 포트 3000 연결)
++ -v : {hostdirectory}:{contianerdirectory} 설정을주면 두개의 폴더가 sharing된다
 
 + 위와 같은 옵션으로 아래와 같이 도커에서 간단히 실행 해볼 수 있다.
 
