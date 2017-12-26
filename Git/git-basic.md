@@ -20,6 +20,13 @@ touch .emptys
 + `git clone -b {branchname} {repositoryUrl}`
 
 
+## 3. git commit 문구 바꾸기
+
++ not pushed, 최근 커밋 메시지바꾸기
+
+```
+git commit --amend
+```
 
 
 
@@ -28,3 +35,5 @@ touch .emptys
 
 ## REF.
 [git-emptyfolder](https://blog.asamaru.net/2015/09/25/git-tracking-empty-directories/)
+
+[git-amend] (https://gist.github.com/nepsilon/156387acf9e1e72d48fa35c4fabef0b4)
