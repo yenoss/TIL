@@ -97,6 +97,20 @@ let mainQueue = OperationQueue.main
 }
 ```
 
+## 7. IOS Archive error
++ ios 테스트플라잇 배포를 위해 archive를 하고 itunse 에 upload를 하려하였으나 아래와 같은 에러가 발생
+
+```
+ 1. itunse store operation Failed 
+    Description length:25523232
+```
+
++ archive 파일 => show PackageContents => Products => Applications =>  show PackageContents => Info.plist를 수정
+
++ info.plist에 DTXcodeBuild 를 9C40으로 수정. 
++ 필자는 xcode 9.1을 사용하고있는데 현재 버전의 버그라고한다.
+
+## 8. invalid 
 
 ## REF.
 [textfield highlight](https://coderwall.com/p/kir4kw/moving-to-the-next-uitextfield-in-an-ios-app)
@@ -108,3 +122,5 @@ let mainQueue = OperationQueue.main
 [btn round](https://stackoverflow.com/questions/37770456/how-to-make-uibutton-a-circle)
 
 [layoutsubview](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621398-viewdidlayoutsubviews)
+
+[xcode archive](https://stackoverflow.com/questions/47644270/xcode-9-2-upload-to-app-store-fails-with-description-length-and-invalid-toolchai)
