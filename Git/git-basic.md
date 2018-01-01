@@ -29,6 +29,10 @@ git commit --amend
 ```
 
 
+## 4. git added 된 파일 diff 보기
+```
+git diff --cached
+```
 
 
 
