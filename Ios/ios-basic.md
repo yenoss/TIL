@@ -110,7 +110,15 @@ let mainQueue = OperationQueue.main
 + info.plist에 DTXcodeBuild 를 9C40으로 수정. 
 + 필자는 xcode 9.1을 사용하고있는데 현재 버전의 버그라고한다.
 
-## 8. invalid 
+## 8. ERROR ITMS-90475: "Invalid Bundle. iPad Multitasking support requires launch storyboard in bundle 'com.companyname.appname.'"
+
++ 앱의 status bar를 false를 하고 archiving 후 appstore에 올리려하였으나 위와같은 에러로 좌절(?) 되었다.
++ 이유는 문구에 나와있듯 multitasking이 지원되는 앱에서 어떻게 앱을 보여줄거냐 에대한 이야기이고, 필자의 서비스는 항상 풀스크린으로 지원할것임으로 아래와 같이 세팅한다
+
++ General > requireds full screen 
+
++ 언제든 full screen으로 사용하는 것으로 에러가 해결되었다.
+
 
 ## REF.
 [textfield highlight](https://coderwall.com/p/kir4kw/moving-to-the-next-uitextfield-in-an-ios-app)
@@ -124,3 +132,5 @@ let mainQueue = OperationQueue.main
 [layoutsubview](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621398-viewdidlayoutsubviews)
 
 [xcode archive](https://stackoverflow.com/questions/47644270/xcode-9-2-upload-to-app-store-fails-with-description-length-and-invalid-toolchai)
+
+[err-fullscreen](https://stackoverflow.com/questions/32557783/invalid-bundle-error-requires-launch-storyboard)
