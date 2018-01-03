@@ -25,7 +25,12 @@ pip3 install gunicron
 
 + 보통 gunicorn을 돌릴땐 코어수*2 +1을 추천한다. 위의 코드는 기본 코어수 + 1로 돌리는 것인데. 이유는 보통 하이퍼스래드로 돌아가서 코어수가 원래갯수에 * 2배로 출력된다는점이 있기 때문에 기존것에 +1을 해두었다 .
 
+#2 migration,migrate
++ migrations는 models의 변경된사항을 올리는 단계이다. 실제 디비에 적용되거나 하진 않는다.
+python3 manage.py makemigrations jjun --settings=yenos.settings.dev
 
++ migrate 실제 변경된 내용을 디비에 반영한다.
+python3 manage.py migrate jjun --settings=yenos.settings.dev
 
 ## REF.
 [git-emptyfolder](https://blog.asamaru.net/2015/09/25/git-tracking-empty-directories/)
