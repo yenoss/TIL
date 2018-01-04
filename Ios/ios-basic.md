@@ -119,6 +119,9 @@ let mainQueue = OperationQueue.main
 
 + 언제든 full screen으로 사용하는 것으로 에러가 해결되었다.
 
+## 9. Sticker app Error
++  This iMessage application is missing its required iMessage app extension, 
++  위와 같은 에러가 발생하면, xcode에서 imessage extension의 타켓의 development target이 알맞은지 확인해보면된다.
 
 ## REF.
 [textfield highlight](https://coderwall.com/p/kir4kw/moving-to-the-next-uitextfield-in-an-ios-app)
@@ -134,3 +137,5 @@ let mainQueue = OperationQueue.main
 [xcode archive](https://stackoverflow.com/questions/47644270/xcode-9-2-upload-to-app-store-fails-with-description-length-and-invalid-toolchai)
 
 [err-fullscreen](https://stackoverflow.com/questions/32557783/invalid-bundle-error-requires-launch-storyboard)
+
+[err-sticker](https://stackoverflow.com/questions/40332947/imessage-application-is-missing-its-required-imessage-app-extension-can-not-ru)

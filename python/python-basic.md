@@ -81,7 +81,8 @@ somelist
 + 위와 같이 slice([:])를 이용하면 새로운 배열을 리턴함으로 기존 somelist와는 다른 배열에서 for loop를 돌게 된다.
 
 
-
+## 4. pip 특저버전 install
++ pip3 install -Iv Django==1.10.2
 
 ## REF.
 [python doc](https://ko.wikipedia.org/wiki/Localhost)
