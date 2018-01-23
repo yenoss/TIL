@@ -76,6 +76,68 @@ public static int fibo(int n) {
 }
 ```
 
+##문제를 어떻게 푸나?
+1. 문제를 구하는 것을 하나의 문장으로 표현
+	* n번째의 피보나치수를 구하여라
+
+2. 점화식을 세워본다
+	* f(n) = f(n-1) + f(n-2)
+
+3. TopDown or BottomUp
+	* Recur or For loop
+
+4. Memo할 것의 포인트를 잡아본다.
+ 
+ 
+ 
+##++ 새로운 문제01
+
+* 정수들이 저장된 n*n행렬에서 좌상단 -> 우상단 으로 이동할때 방문한 칸에 있는 모든 정수들의 합이 최소가 되도록하라!(단 오른쪽과 아래로만 움직일 수 있다.)
+
+* 판단해보자
+	1. 기존 값을 가져다쓸 수 있는가? ( 어떠한 점에서 이미 최소값이 존재하고 이는 변경될 수 없다.)
+	2. 작은 문제로 나누어 쓸 수 있는가? ( 이전의(작은문제) 최소값 + 현재값을 더해주자.)
+
+* 정의와 점화식을 내리자.
+	* 정의 : L[i,j] = (1,1)에서 (i,j)의 최소값.
+	* 점화식 : 
+		* L[i,j] = { 
+		* (i=0,j=0) => L[i][j],
+		* (i=0) => L[0,j-1] + m[i][j](맨 윗줄 가로일때),
+		* (j=0) => L[i-1,0] + m[i][j](맨 왼쪽 세로일때)
+
+* 이를 코드로 나타낸다. 중복되는 부분이있음으로 memo를 사용하여 중복을  제거한다.
+
+
+```		
+    public static int mins(int i,int j) {
+
+        if(memo[i][j] !=0) return memo[i][j];
+        if( i==0 && j==0 ) {
+
+            return memo[i][j]= arr[i][j];
+        } 
+        else if( i==0 ) {
+
+            return memo[i][j] = arr[i][j] + mins(0,j-1);
+        }
+        else if( j==0 ) {
+
+            return memo[i][j]= arr[i][j] + mins(i-1,0);
+        }
+
+        else{
+
+            return memo[i][j] = Math.min(mins(i-1,j),mins(i,j-1))+arr[i][j];
+        }
+    }
+```
+		
+
+	
+
+ 
+ 
  
 
 
