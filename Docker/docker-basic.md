@@ -187,7 +187,7 @@ LC_ALL=
 + 즉, 아무것도 설정되어있지 않는 상태
 
 
-	
+​	
 + 위 라이브러리 설치하기전 아래와같이 ubuntu locale을 아래와 같이 utf8기반으로 바꿔주면된다.
 
 ```
@@ -220,8 +220,37 @@ LC_ALL=en_US.UTF-8
 ```
 
 
+
+## 3 Docker Proxy Setting
+
+* Version : 18.06
+
+~~~shell
+
+sudo vim /ete/systemd/system/docker.service.d/http-proxy.comf
+
+//아래와같이 설정
+[Service]
+Environment="HTTP-PROXY={proxyip}/"
+Environment="HTTPS-PROXY={proxyip}"
+Environment="NO_PROXY=localhost,127.0.0.1"
+
+//아래와 같이 리로드& 확인			
+systemctl daemon-reload
+systemctl restart docker
+systemctl show --property=Environment docker
+
+~~~
+
+
+
+
+
 ## REF.
+
 [aws-ecs](http://docs.aws.amazon.com/ko_kr/AmazonECR/latest/userguide/docker-pull-ecr-image.html)
 [locale set](https://github.com/mozilla/unicode-slugify/issues/16)
 [locale set2](http://jaredmarkell.com/docker-and-locales/)
 [local ?](https://beomi.github.io/2017/07/10/Ubuntu-Locale-to-ko_KR/)
+
+[dockerProxy](https://blog.itanoss.kr/ko/%EC%9A%B0%EB%B6%84%ED%88%AC-16-04%EC%97%90%EC%84%9C-docker-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0/)

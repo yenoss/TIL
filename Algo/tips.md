@@ -2,7 +2,7 @@
 
 
 
-##input/output
+## input/output
 
 * input/output이 많을 경우 java에서 쓰이는 scanner와 system.out은 매우 느리다.
 * inputstream과 outputstream을 사용하면 빠르게 이용할 수 있다.
@@ -45,12 +45,13 @@ public class Main {
 
 ```
 
-##recurrence
+## recurrence
+
 * 재귀함수는 아래와같은 대부분 함수내부에 아래와 같은 조건이 붙는다.
 	1. 종료조건( 무한대로 돌면안되니 특정 시점에서 멈추게.. fibo 에서 `if(n<=1)  return n;` 와 유사하다. )
 	2. 다시 함수를 콜하는  조건( 주요 로직 특정 조건에서 다시 재귀함수를 콜하는 부분을 말한다.)
 	3. + memo dp 에서 쓰일경우 memo의 값이 존재하면 있는값을 쓰는 경우가있다. if(memo[n]>0){ return memo[n]);
- 
+
 
 
 
