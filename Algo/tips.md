@@ -54,6 +54,12 @@ public class Main {
 
 
 
+#### 컴퓨터는 소수를 어떻게 나타내지?
+
+* [부동,고정소수점](https://steemit.com/kr/@modolee/floating-point)
+
+
+
 
 ## REF.
 [bufferreader](http://cocomo.tistory.com/507)

@@ -131,4 +131,30 @@ import _ "time"
 ~~~
 
 * 선언만하고 사용하지 않으면 컴파일 에러가남!
+
 * import패키지를 사용하지 않으면 컴파일 에러가남!
+
+* rune
+  * utf-8 문자 코드를 저장할때 사용.
+
+  * '' 작은 따옴표를 이용하여 묶어주어야함.
+
+  * ~~~go
+    	var r1 rune = '한'
+    	var r2 rune = '\ud55c'
+    ~~~
+
+* `unsafe.Sizeof(t)` 는 바이트를 반환.
+
+#### fmt.print vs print
+
+*  print와 같은 경우 stdout이아닌 stderr로 보냄.
+* fmt.print는 stdout 으로 보냄.
+* print는 간단히 디버그용이고, 실제 프로덕션용 프린트는 fmt를 쓰는게 일반적이고 많은 기능들을 가짐.
+
+
+
+
+
+### Machine Epsilon?
+
