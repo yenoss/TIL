@@ -44,3 +44,24 @@
 - 베이스이미지에 필요한 프로그램과 라이브러리를 설치하면 베이스이미지에 바뀐부분만 이미지로 생성하고 실행시 베이스이미지와 합쳐서 실행.
 - ubuntu:1.03 에서 nginx를 추가하면 ubuntu:1.03에 nginx 설치부부만 설치되어 새로운 nginx:1.0이미지가 만들어짐
 - 컨테이너는 이미지를 실행한 상태. 하나의 이미지로 여러컨테이너 생성가능.
+
+
+
+### 4. Dockerfile
+
+* VOLUME: 호스트에 내용 연결하면서 올리기
+
+* chown -R [user:group] target : 그룹과 유저를 설정해주고 해당 폴더에 할당해준다 nginx폴더에  유저인 www-data가 되도록하는 과정
+
+
+
+### 6. Docker registry image
+
+* 도커의  레지스트리 이미지를 이미지로 받아온다.
+  * `sudo docker pull registry:latest`
+  * `sudo docker run -d -p 3000:3000 --name regitry -v /tmp/regitry:/tmp/regitry regitry`
+  * 이미지를 컨터이너로 실행했다.
+
+* `sudo docker push {regiturl}/{image}:{tag}` 와 같은 형식으로 올리면됨.
+
+* sudo docker pull {regiturl}/{image}:{tag}로 다시받아올 수 있음.

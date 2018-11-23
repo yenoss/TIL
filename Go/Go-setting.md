@@ -25,6 +25,7 @@
 
 * python에 pip가 있다면 go에는 dep이 있다.
 * 설치
+
   * `sudo apt-get install dep`
 
 * 패키지 추가
@@ -41,7 +42,7 @@
         version = "v1.4.1"
       ~~~
 
-* 패키지 전체 설치
+* 패키지리스트 전체 설치
 
   * `dep ensure`	
   * vendor 폴더에 모든 패키지가 설치된다.

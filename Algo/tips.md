@@ -60,6 +60,13 @@ public class Main {
 
 
 
+## PGP 프로그램이란?
+
+* 컴퓨터파일을 암호화 복호화 하는 프로그램
+* [pgp](https://ko.wikipedia.org/wiki/PGP_(%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4))
+
+
+
 
 ## REF.
 [bufferreader](http://cocomo.tistory.com/507)

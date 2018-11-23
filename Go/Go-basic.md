@@ -140,11 +140,23 @@ import _ "time"
   * '' 작은 따옴표를 이용하여 묶어주어야함.
 
   * ~~~go
-    	var r1 rune = '한'
-    	var r2 rune = '\ud55c'
+     var r1 rune = '한'
+       	var r2 rune = '\ud55c'
+     ~~~
+    ~~~
+  
     ~~~
 
 * `unsafe.Sizeof(t)` 는 바이트를 반환.
+
+
+
+#### defer
+
+* 함수가 종료되기전 특정구문 실행을 지연하였다가 종료직전에 해당 구문을 실행하는것.
+* c#에 final과 유사하다.
+
+
 
 #### fmt.print vs print
 
