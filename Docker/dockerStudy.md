@@ -65,3 +65,77 @@
 * `sudo docker push {regiturl}/{image}:{tag}` 와 같은 형식으로 올리면됨.
 
 * sudo docker pull {regiturl}/{image}:{tag}로 다시받아올 수 있음.
+
+
+
+
+
+### 7. DockerFiles
+
+### run
+
+* Run <명령어>  
+* Run [실행파일, 매개변수1,2,] 형식.
+  * RUN["apt-get","install","-y","nginx"]
+  * RUN["docker", "--help"] 
+* 기본적으로 DockerFiles들은 캐시된 결과를 사용함으로 캐시 데이터를 사용하지 않으려면 docker build시 `--no-cache`명령어 사용.
+
+
+
+### CMD
+
+* 컨테이너가 시잭되었을때 실행하는 명령
+
+* from에서 이미지에 폼한된 bash실행파일이 있을경우. 그냥 명령어 바로 입력.
+
+  * `CMD touch /home/heool/heool.txt`
+
+* 쉘없이 바로실행할경우
+
+  - `CMD["redis-server"]`
+
+
+
+## Entry Point
+
+* docker run , start 명령으로 컨테이너가 생성 혹은 정지된 컨테이너가 시작될때 실행됨. 
+* 사용법은 위의 Run,Cmd와 같음.
+
+
+
+## ENV
+
+* 환경변수 설정. 
+* RUN,CMD,ENTRYPOINT 에 모두 이용할 수있음.
+
+```shell
+ENV NAME 1234
+CMD echo $NAME
+```
+
+
+
+## ADD&COPY
+
+* 모두 이미지에 파일을 올리는 방식.
+* copy는 add와 달리 URL방식의 파일을 등록할 수 없고, tar파일을 압축한 상태로 등록.
+
+
+
+
+
+## VOLUME
+
+* 컨테이너 특정 영역 저장내용을 호스트에 저장하도록 함.
+* `VOLUME /data VOLUME ["/data","var/log/hello"]` 
+  * 첫번째 볼륨은 호스트, 두번쨰 볼륨은 컨테이너 디렉터리 를 함.
+* 볼륨은 선언만해주는것이고 실제 run할때 -v옵션으로 디렉터리를 연결해주어야 함.
+
+
+
+
+
+##  On Build
+
+* 후에 현재 이미지가 다른 이미지의 from으로 사용될 경우 실해되는 명령어.
+* `ONBUILD RUN touch /hello.txt`
