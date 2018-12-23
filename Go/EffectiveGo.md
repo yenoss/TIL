@@ -241,8 +241,24 @@ func a() {
 
 
 
+## Data
 
+### Allocation With new
 
+* 고에는 두개의 할당 빌트인  함수들이 있다. new & make임.
+
+* 두 개는 서로 다른 유형임.
+
+* new
+
+  * new(T) 는 zero가 된 저잔소를 할당함.
+
+  * 포인터로 반환되기때문에 0값의 저장소를 가르키는 포인터를 반환함.
+
+  * 0으로 초기화되기 때문에 기본값이 0인 값을 사용하는 형태일때 쓰이면 됩니다.
+
+    * byte.Buffer는 기본 0값을 사용할 준비가 된 버퍼.
+    * syncMutext에도 init이나 consructure가 없음. 대신 sync Mutex의 0값은 잠기지 않은 상태르 나타냄.
 
 
 
