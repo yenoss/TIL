@@ -20,6 +20,13 @@ sudo docker pull ubuntu:16.04
 sudo docker images 
 ```
 
+#### docker Image 삭제.
+
+```
+sudo docker rmi $(sudo docker images | grep "<")
+
+```
+
 #### docker image로 컨테이너 만들어 실행시키기.
 
 ```
@@ -42,6 +49,13 @@ sudo docker run -d -p 3000:3000 fifl
 ```
 
 + background 서버 돌려놓기.
+
+* Example
+
+  * ```
+    sudo docker run --name mariadb -p 3305:3306 -e MYSQL_ROOT_PASSWORD=root -d mariadb:10.1.34
+    ```
+
 
 #### docker container 보기
 
@@ -82,6 +96,14 @@ sudo docker push {repository}/test:latest
 ```
 
 + 실제 도커이미지가 올라갑니다.
+
++ example
+
+  + ``` 
+    sudo docker tag myImage:0.1 {레파짓토리주소}/ciam-ui:0.1
+    sudo docker push {레파짓토리주}/myImage:0.1
+    ```
+
 
 #### docker diff
 ```

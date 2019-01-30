@@ -23,7 +23,19 @@ set nocompatible
 
 
 
+## 3. Command
 
+* **top**
+  - memory cpu 사용량 watch
+  - 진보버전(htop)
+* **df**
+  - 마운트된것 usage로 보기
+* **lsblk** 
+  - 모든 마운트된것 리스트로 보여주기
+* **ctrl + R**
+  - 이전에 쳤던 linux명령어 찾아서 바로 실행 할 수 있도록 하기
+* **netstat -tnlp**
+  * 열린 포트 확인
 
 ## REF
 
