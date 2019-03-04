@@ -63,7 +63,10 @@
 #### 0.9999 ???
 
 * [cidata](https://cloudinit.readthedocs.io/en/0.7.9/topics/datasources/nocloud.html) : 걍 volume lable이름이 cidata여양한다는 뜻.
-* 
+
+
+
+
 
 
 
