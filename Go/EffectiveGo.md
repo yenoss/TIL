@@ -252,13 +252,102 @@ func a() {
 * new
 
   * new(T) 는 zero가 된 저잔소를 할당함.
-
   * 포인터로 반환되기때문에 0값의 저장소를 가르키는 포인터를 반환함.
-
+  * 메모리를 이니셜라이즈 하지 않는다. 
   * 0으로 초기화되기 때문에 기본값이 0인 값을 사용하는 형태일때 쓰이면 됩니다.
 
     * byte.Buffer는 기본 0값을 사용할 준비가 된 버퍼.
     * syncMutext에도 init이나 consructure가 없음. 대신 sync Mutex의 0값은 잠기지 않은 상태르 나타냄.
+
+### Constructors and composite literals
+
+* zero value는 완벽하지는 않다. initializing이 필요할 수 있을 때가 있기 때문이다. 
+
+```
+func NewFile(fd int, name string) *File {
+    if fd < 0 {
+        return nil
+    }
+    f := new(File)
+    f.fd = fd
+    f.name = name
+    f.dirinfo = nil
+    f.nepipe = 0
+    return f
+}
+```
+
+* newFile의 initialize를 할때 위와같이 설정 할 수 있을것이다. 당장에 쓰이지 않을(말그대로 초기화할)  부분을 nil과 0으로 채울수 있을것이다.
+* 이러한 경우에는 composit literal로  간단히 나타낼 수 있다.
+
+~~~
+func NewFile(fd int, name string) *File {
+    if fd < 0 {
+        return nil
+    }
+    f := File{fd, name, nil, 0}
+    return &f
+}
+~~~
+
+* 여기서 nil과 0은 zero value로 자동으로 들어가기 때문에 이 마져도 아래와 같이 줄일 수 있다.
+
+~~~
+return &File{fd: fd,name: name}
+~~~
+
+* 이는 다른 데이터 타입에서도 적용될 수 있다.
+
+~~~
+ele := [...]string {1:"hi",3:"nice}
+fmt.Printf(“%#v, length=%d\n”, elements, len(elements))
+//
+[4]string{“”, “hi”, “”, “nice”, “”}, length=4
+~~~
+
+* 빈 곳은  "" 로 채워진것을 볼 수 있다.
+
+### Allocation With make
+
+- new 와 애당초 make는 쓰임 목표가 다르다. 
+- initialized value가 zero value가 아니라는 점이다. 
+- 사용되기전에 일정량의 length, capcity가 보장되어야하는 데이터에 쓰인다. 
+
+~~~
+make([]int, 10, 100)
+~~~
+
+* 위의 예제는 100까지의 int를 담을 수 있는  array를 준비해두고 10만큼의 길이의 slice structrure를 할당해둔다. (여기는 slice가 make 될때 capcity가 어떻게 할당되는지 참고하면 된다.)
+
+~~~
+var p *[]int = new([]int)       // allocates slice structure; *p == nil; rarely useful
+var v  []int = make([]int, 100) // the slice v now refers to a new array of 100 ints
+
+// Unnecessarily complex:
+var p *[]int = new([]int)
+*p = make([]int, 100, 100)
+
+// Idiomatic:
+v := make([]int, 100)	
+~~~
+
+* 위의 코드를 보면 확실히 new와 make의 차이를 느낄 수 있다.
+
+
+
+## Arrays
+
+* Go와  C의 array의 차이는 아래와 같다.
+  * Arrays는 values값이다.  copy시 모든 element들이 copy된다.
+  * function 에 array를 받았다면 그것은 copy값이다. point값이 아니다.
+  * array의 size는 type에 일부분이다. 
+* value property는 유용하지만 cost가 비싸다. c style로 필요하다면 당연 point값으로 이용하면 된다.
+
+
+
+
+
+
 
 
 
@@ -268,3 +357,6 @@ func a() {
 ## REF
 
 [EffetiveGo](https://golang.org/doc/effective_go.html#formatting)
+
+[examples](https://medium.com/golangspec/composite-literals-in-go-10dc62eec06a)
+
