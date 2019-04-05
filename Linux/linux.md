@@ -102,7 +102,11 @@ set nocompatible
   * 만일 온데이터의  1의 수가 홀수 이면  에러!
 
 
-
+## 9. %? (exit code)
+* linux 계열은 exit code 라는게 존재한다. [link](https://www.tldp.org/LDP/abs/html/exitcodes.html)
+* 실행가능 프로그램이 상위프로세스에게 리턴해주는 코드이다. 
+* 위 명령어를 치면 방금전에 종료되었던 프로세스의 exitcode를 출력한다
+* consul의 service health chck의 bash 성공여부의 판단 기준은 exicode가 된다. 
 
 
 
