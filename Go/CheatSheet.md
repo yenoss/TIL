@@ -1,3 +1,4 @@
+
 ## Arry Init in Struct
 
 ```
