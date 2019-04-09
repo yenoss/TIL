@@ -108,7 +108,13 @@ set nocompatible
 * 위 명령어를 치면 방금전에 종료되었던 프로세스의 exitcode를 출력한다
 * consul의 service health chck의 bash 성공여부의 판단 기준은 exicode가 된다. 
 
+## 10. jq 
+* Pretty json in command
 
+~~~
+sudo apt-get install jq
+cat someText.txt | jq .
+~~~
 
 ## REF
 
