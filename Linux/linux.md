@@ -116,6 +116,9 @@ sudo apt-get install jq
 cat someText.txt | jq .
 ~~~
 
+## 11.proc
+* linux 에서는 process들의 정보를  proc에 모아둔다.  ps도 proc에 있는 내용들을 취합해 보여주는 것.
+
 ## REF
 
 [systemCtl](http://haker.tistory.com/51)
