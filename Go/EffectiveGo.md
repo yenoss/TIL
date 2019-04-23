@@ -51,7 +51,7 @@ if owner != user {
 
 * er suffix 를 사용해라. 
   * Reader,Writer,Formatter,CloseNotifier ..
-  * 다만 read,write와같은  signiture한 이름을 피해라
+  * 다만 read,write와같은 signature 이름을 피해라
 
 
 
