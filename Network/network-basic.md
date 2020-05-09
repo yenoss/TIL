@@ -2,8 +2,22 @@
 
 ## WHAT?
 + 네트워크에 대한 기본적인 지식들을 적습니다.
+## 6.bonding 란? 
+* 왜?
+  * 너무 많이 들어봄.. 
+> 여러 네트웤 인터페이스를 묶어 하나의 채널로 사용하는것. 
 
-## 1.localhost 란? 
+* linux kernel의 기술로 2개 이상의 network interface card를 하나처럼 사용하게 되는데 이렇게 사용되면 몇 장점 이있다.
+   + ha 구성; 하나의 닉카드가 죽어도 bonding되어 있다면 장애에 대응할 수 있다.
+   + 대역폭 상승; 1g짜리 4개를 bonding하게 되면 4g짜리 처럼 쓸 수 있다.
+ 
+* 여러가지 모드를 제공한다.
+   + mode0 (roud-robin): active/active 모드로 순차적으로 패킷을 분산하고 닉 갯수대로 대역폭 상승을 이론적으로 기대할 수 있다.
+   + mode1 (active-backup): slave가 standby상태로 대기하게된다. 
+   + mode3,4 도 다양한 방식으로 본딩을 기술적 지원해준다.
+
+
+## 5.localhost 란? 
 > localhost는 네트워크에서 사용하는 루프백(의도적으로 원래의 장비로돌아가는 것) 호스트명으로 자신의 컴퓨터를 의미한다.
 
 + IPv4에서는 127.0.0.1과, IPv6에서는 ::1(0:0:0:0:0:0:0:1)과 일맥상통하다. 
@@ -12,9 +26,9 @@
 
 
 
-## 2. ARP(Address Resolution Protocol) 란?
+## 4. ARP(Address Resolution Protocol) 란?
 
-* ??
+* 왜?
   *  routing, switch를 보다보니 arp를 통해 통신한다고함.
 
 > IP주소에 해당하는 NIC의 mac주소를 알아내는 프로토콜
@@ -33,8 +47,8 @@
 
 ## 3. SubnetMask, Default Gateway
 
-* ??
-  * 너무 많이 쓰인느 용어
+* 왜?
+  * 너무 많이 쓰인 용어
 
 > 서브네트워크. 나와 같은 네트웤인가?
 
@@ -49,7 +63,7 @@
 
 
 
-## 3. [VirtualNetworking](http://linux.systemv.pe.kr/virtual-networking-in-linux/)
+## 2. [VirtualNetworking](http://linux.systemv.pe.kr/virtual-networking-in-linux/)
 
 *  왜?
   * vm들은 각각의 네트워크가 존재하는 것처럼 보여야한다. 가상으로 떠있기 때문에… 하지만 실제로는 서버 한대에 묶여있기때문에 내부의 vm끼리의 네트워킹 등을 처리해야할 방법이 필요하다. 
@@ -59,7 +73,7 @@
 
 
 
-## 4. Bridge
+## 1. Bridge
 
 - 브릿지는 한카드로 두개의 트래픽을 받고싶을때 사용한다. host,guest network를 연결하여 두개의 네트워크를 하나의 네트워크로 사용할때 쓴다.
 - host,guest모두 같은 네트웤을 가지기때문에 호스트가 public ip 를 할당받는일이있어도 동일한 IP대역을 받을 수 있다.
