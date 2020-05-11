@@ -1,6 +1,19 @@
-# Ubuntu
+# Linux
 
-## 1. vi 에서 화살표가 영문자로 타이핑된다면..
+## 12. systemd-[install]
+* Install의 WantedBy는 무슨 역할을 하는가?
+```
+[Install]
+WantedBy=multi-user.target
+```
+
+* systemctl의 enable이란 속성이 있는데 이는 컴퓨터가 리부팅될때 enable되어있으면 해당 서비스가 알아서 재부팅 되게된다. 
+* 이때 실행 권한 같은 것이 run level로 표기되고 이를 WantedBy에 표기하게된다. 
+  * level1 싱글 유저환경.
+  * level2 는 멀티 유저환경. 등을 일컫는데
+* 위와 같은 환경 설정은 level2의 멀티유저의 환경일때 동작가능하도록 디펜던시를 걸어두는 것이다. 
+
+## 11. vi 에서 화살표가 영문자로 타이핑된다면..
 
 * vim ~/.vimrc에서 아래와같이 설정해주면 된다.
 
@@ -10,7 +23,7 @@ set nocompatible
 
 
 
-## 2. SystemCtl?
+## 10. SystemCtl?
 
 * SystemD
   * 최상위 프로세서로 유저레벨에서 최초 실행된다.
@@ -23,7 +36,7 @@ set nocompatible
 
 
 
-## 3. Command
+## 9. Command
 
 * **top**
   - memory cpu 사용량 watch
@@ -42,7 +55,7 @@ set nocompatible
 
 
 
-## 4. zero copy
+## 8. zero copy
 
 * 일반적으로 application에서 copy가 일어날경우 4번의 context swtiching이 일어난다. 
   * 이는 보통 성능에 영향을 미치게된다.
@@ -56,7 +69,7 @@ set nocompatible
 
 
 
-## 5. dfs
+## 7. dfs
 
 * 분산파일시스템. 
 * network를 통해 공유되어지는 파일 시스템
@@ -73,7 +86,7 @@ set nocompatible
 
 
 
-## 7. Raid
+## 5. Raid
 
 * 여러개의 하드디스크를 묶어 하나의 디스크를 사용하는것과 같은 방식이다.
 * 몇개의 하드가 고장나도 기술적으로 보완가능하다.
@@ -94,7 +107,7 @@ set nocompatible
 
 
 
-## 8. Parity 
+## 4. Parity 
 
 * parity check 는 odd/even 두 가지가 있으며
 * 오류검출을 아래와 같이 할 수 있다.
@@ -102,13 +115,13 @@ set nocompatible
   * 만일 온데이터의  1의 수가 홀수 이면  에러!
 
 
-## 9. %? (exit code)
+## 3. %? (exit code)
 * linux 계열은 exit code 라는게 존재한다. [link](https://www.tldp.org/LDP/abs/html/exitcodes.html)
 * 실행가능 프로그램이 상위프로세스에게 리턴해주는 코드이다. 
 * 위 명령어를 치면 방금전에 종료되었던 프로세스의 exitcode를 출력한다
 * consul의 service health chck의 bash 성공여부의 판단 기준은 exicode가 된다. 
 
-## 10. jq 
+## 2. jq 
 * Pretty json in command
 
 ~~~
@@ -116,7 +129,7 @@ sudo apt-get install jq
 cat someText.txt | jq .
 ~~~
 
-## 11.proc
+## 1.proc
 * linux 에서는 process들의 정보를  proc에 모아둔다.  ps도 proc에 있는 내용들을 취합해 보여주는 것.
 
 ## REF
@@ -128,4 +141,6 @@ cat someText.txt | jq .
 [raid](https://jerrystyle.tistory.com/56)
 
 [mkiofs](https://idchowto.com/?p=8294)
+
+[systemd-install](https://idchowto.com/?p=20095)
 
