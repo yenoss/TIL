@@ -1,5 +1,25 @@
 # Linux
 
+## 13. linux directory 기본
+
+* bin : 명령어 들이 저장. mv,cp..
+* boot : linux boot loader 존재 .
+* dev: device파일을 저장, 하드 및 장치들
+* etc: 시스템의 설정파일들이 존재. /etcsysconfig, /etc/passwd, /etc/named.conf ...
+    - etc/ssh, /etc/skel ...
+* home: user dir
+* lib: 커널 모듈파일, 라이브러리 파일. c c++등에 필요한 각종 라이브러리 등..
+* media: dvd,cdrome
+* mnt: 탈부착가능한 장치들의 일시적 마운트포인트
+* proc: 가상파일시스템. 현재 메모리에 존재하는 모든 것들이 파일형태로 존재. 디스트가 아니라 메모리.
+* root: root의 개인 홈 디렉토리
+* sbin: ifconfig, e2fsck, ethtool등 시스템 관리자가 사용하는 명령어들
+* tmp: 시스템 사용자들이 공동으로 사용되는디렉토리 mysql.socket, session파일등이 생성됨
+* usr: 시스템이 아닌 일반 유저들이 사용되는 디렉토리 c++ cpp crontab등 일반사용자들 명령어는 usr/bin에 생성됨
+* var: 시스템 운용에 일시적으로 사용되다 삭제되는것들 var/log등에 로그를 저장하고  dns에 zone설정은 /var/named에 저장
+    * var/tmp: 일시적으로 저장되는 공용디렉토리
+* lost+found: 최상위 디렉토리  파일시스템마다 존재할 수 있는 디렉토리 연결이 끊어진 inode들이 숫자파일로 존재하는 곳
+
 ## 12. systemd-[install]
 * Install의 WantedBy는 무슨 역할을 하는가?
 ```
@@ -144,3 +164,4 @@ cat someText.txt | jq .
 
 [systemd-install](https://idchowto.com/?p=20095)
 
+[directory](https://webdir.tistory.com/101)
